@@ -10,7 +10,13 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends("next/core-web-vitals"),
+  {
+    rules: {
+      "@typescript-eslint/no-explicit-any": "error", // Proíbe o uso de 'any'
+      "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }], // Ignora variáveis que começam com '_'
+    },
+  },
 ];
 
 export default eslintConfig;
